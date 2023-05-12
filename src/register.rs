@@ -3,18 +3,17 @@ use num_enum::TryFromPrimitive;
 
 /// Possible I²C slave addresses.
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
-#[repr(u8)]
-pub enum SlaveAddr {
-    /// Default slave address (`0x18`)
-    Default = 0x18,
-
-    /// Alternate slave address (`0x19`)
-    Alternate = 0x19,
-}
-
+pub struct SlaveAddr(pub u8);
 impl SlaveAddr {
-    pub fn addr(self) -> u8 {
-        self as u8
+    /// Alternate slave address (`0x19`)
+    pub fn alternate() -> Self {
+        Self(0x19)
+    }
+}
+impl Default for SlaveAddr {
+    /// Default slave address (`0x18`)
+    fn default() -> Self {
+        Self(0x18)
     }
 }
 

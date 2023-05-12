@@ -108,7 +108,7 @@ where
     ) -> Result<Self, Error<E, core::convert::Infallible>> {
         let core = Lis3dhI2C {
             i2c,
-            address: address.addr(),
+            address: address.0,
         };
 
         let mut lis3dh = Lis3dh { core };
